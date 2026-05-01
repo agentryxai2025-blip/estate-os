@@ -6,6 +6,13 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface HealthStatus {
+export interface ActivityItem {
+  id: string;
+  type: string;
+  title: string;
+  description: string;
+  timestamp: string;
   status: string;
+  aiGenerated: boolean;
+  urgent?: boolean;
 }

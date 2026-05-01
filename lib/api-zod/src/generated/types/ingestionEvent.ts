@@ -6,6 +6,13 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface HealthStatus {
+export interface IngestionEvent {
+  id: string;
+  sourceId: string;
+  sourceName: string;
+  eventType: string;
+  payload: string;
+  timestamp: string;
   status: string;
+  recordsAffected: number;
 }

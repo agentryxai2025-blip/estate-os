@@ -6,6 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface HealthStatus {
+export interface IngestionJob {
+  jobId: string;
+  sourceId: string;
   status: string;
+  startedAt: string;
+  estimatedRecords: number;
 }
