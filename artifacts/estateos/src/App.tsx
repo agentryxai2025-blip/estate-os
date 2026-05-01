@@ -18,6 +18,7 @@ import Campaigns from "@/pages/campaigns";
 import DataSources from "@/pages/data-sources";
 import AiConfig from "@/pages/ai-config";
 import Audit from "@/pages/audit";
+import Architecture from "@/pages/architecture";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ function Router() {
         <Route path="/data-sources" component={DataSources} />
         <Route path="/ai-config" component={AiConfig} />
         <Route path="/audit" component={Audit} />
+        <Route path="/architecture" component={Architecture} />
       </Switch>
     </Layout>
   );

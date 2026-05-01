@@ -10,7 +10,8 @@ import {
   Megaphone, 
   Database, 
   Settings2, 
-  History
+  History,
+  Network
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -26,6 +27,7 @@ const navigation = [
   { name: "Data Sources", href: "/data-sources", icon: Database },
   { name: "AI Config", href: "/ai-config", icon: Settings2 },
   { name: "Audit Log", href: "/audit", icon: History },
+  { name: "Architecture", href: "/architecture", icon: Network },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
