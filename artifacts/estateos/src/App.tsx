@@ -4,16 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/layout";
-import { useEffect } from "react";
-
-const queryClient = new QueryClient();
-
-function ThemeInitializer() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
-  return null;
-}
+import { ThemeProvider } from "@/lib/theme-context";
 
 import Dashboard from "@/pages/dashboard";
 import Properties from "@/pages/properties";
@@ -27,6 +18,8 @@ import Campaigns from "@/pages/campaigns";
 import DataSources from "@/pages/data-sources";
 import AiConfig from "@/pages/ai-config";
 import Audit from "@/pages/audit";
+
+const queryClient = new QueryClient();
 
 function Router() {
   return (
@@ -52,15 +45,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <ThemeInitializer />
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 
