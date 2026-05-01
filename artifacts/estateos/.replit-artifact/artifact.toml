@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "EstateOS — TAGRe"
+version = "1.0.0"
+id = "artifacts/estateos"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24841
+
+[services.development]
+run = "pnpm --filter @workspace/estateos run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/estateos", "run", "build" ]
+publicDir = "artifacts/estateos/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24841"
+BASE_PATH = "/"
