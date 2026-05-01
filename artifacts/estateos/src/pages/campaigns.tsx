@@ -61,9 +61,9 @@ export default function Campaigns() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <Card className={`bg-card/50 overflow-hidden transition-colors border-white/5 ${isDraftReady ? 'border-orange-500/30' : ''}`}>
+                  <Card className={`bg-card/50 overflow-hidden transition-colors border-border/50 ${isDraftReady ? 'border-orange-500/30' : ''}`}>
                     <div 
-                      className="p-6 cursor-pointer hover:bg-white/5 transition-colors"
+                      className="p-6 cursor-pointer hover:bg-muted/40 transition-colors"
                       onClick={() => setExpandedId(isExpanded ? null : campaign.id)}
                     >
                       <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
@@ -109,20 +109,20 @@ export default function Campaigns() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="border-t border-white/5"
+                          className="border-t border-border/50"
                         >
-                          <CardContent className="p-6 bg-black/20">
+                          <CardContent className="p-6 bg-muted/30">
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                               <div className="lg:col-span-2 space-y-4">
                                 <div className="flex items-center gap-2 text-primary font-medium">
                                   <Sparkles className="h-5 w-5" /> AI Drafted Email
                                 </div>
-                                <div className="bg-card p-6 rounded-md border border-white/5 space-y-4">
+                                <div className="bg-card p-6 rounded-md border border-border/50 space-y-4">
                                   <div>
                                     <p className="text-sm text-muted-foreground mb-1">Subject:</p>
                                     <p className="font-medium">{campaign.emailSubject || `Weekly Update: ${campaign.propertyAddress}`}</p>
                                   </div>
-                                  <div className="h-px bg-white/5 w-full" />
+                                  <div className="h-px bg-border/50 w-full" />
                                   <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground whitespace-pre-wrap">
                                     {campaign.emailBody || "We had a solid week of inspections with strong buyer interest..."}
                                   </div>
@@ -142,7 +142,7 @@ export default function Campaigns() {
                                 
                                 <div>
                                   <h4 className="text-sm font-medium text-muted-foreground mb-2">Price Recommendation</h4>
-                                  <div className="bg-card p-4 rounded-md border border-white/5 text-sm">
+                                  <div className="bg-card p-4 rounded-md border border-border/50 text-sm">
                                     <p className="font-medium">{campaign.priceRecommendation || "Maintain current guide"}</p>
                                     <p className="text-muted-foreground mt-1">Current guide: {campaign.priceGuide}</p>
                                   </div>

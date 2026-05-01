@@ -31,8 +31,8 @@ export default function AiConfig() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="bg-card/50 border-white/5">
-            <CardHeader className="pb-3 border-b border-white/5">
+          <Card className="bg-card/50 border-border/50">
+            <CardHeader className="pb-3 border-b border-border/50">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Cpu className="h-5 w-5 text-primary" />
                 Active Providers
@@ -41,7 +41,7 @@ export default function AiConfig() {
             <CardContent className="p-0">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-white/5 hover:bg-transparent">
+                  <TableRow className="border-border/50 hover:bg-transparent">
                     <TableHead>Provider</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Region</TableHead>
@@ -53,7 +53,7 @@ export default function AiConfig() {
                   {loadingProviders ? (
                     <TableRow><TableCell colSpan={5}><Skeleton className="h-12 w-full" /></TableCell></TableRow>
                   ) : providers?.map((p) => (
-                    <TableRow key={p.id} className="border-white/5">
+                    <TableRow key={p.id} className="border-border/30">
                       <TableCell>
                         <div className="font-medium">{p.name}</div>
                         <div className="text-xs text-muted-foreground">{p.vendor}</div>
@@ -66,7 +66,7 @@ export default function AiConfig() {
                       </TableCell>
                       <TableCell className="text-sm text-muted-foreground">{p.region}</TableCell>
                       <TableCell className="text-sm font-mono">{p.avgLatencyMs}ms</TableCell>
-                      <TableCell className="text-right text-sm font-medium text-green-500">{p.successRate}%</TableCell>
+                      <TableCell className="text-right text-sm font-medium text-green-600">{p.successRate}%</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -74,8 +74,8 @@ export default function AiConfig() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50 border-white/5">
-            <CardHeader className="pb-3 border-b border-white/5">
+          <Card className="bg-card/50 border-border/50">
+            <CardHeader className="pb-3 border-b border-border/50">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Settings2 className="h-5 w-5 text-primary" />
                 Task Routing
@@ -84,7 +84,7 @@ export default function AiConfig() {
             <CardContent className="p-0">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-white/5 hover:bg-transparent">
+                  <TableRow className="border-border/50 hover:bg-transparent">
                     <TableHead>Task</TableHead>
                     <TableHead>Primary Model</TableHead>
                     <TableHead>Fallback</TableHead>
@@ -95,7 +95,7 @@ export default function AiConfig() {
                   {loadingTasks ? (
                     <TableRow><TableCell colSpan={4}><Skeleton className="h-12 w-full" /></TableCell></TableRow>
                   ) : tasks?.map((t) => (
-                    <TableRow key={t.id} className="border-white/5">
+                    <TableRow key={t.id} className="border-border/30">
                       <TableCell>
                         <div className="font-medium">{t.taskLabel}</div>
                         {t.containsPii && (
@@ -119,7 +119,7 @@ export default function AiConfig() {
         </div>
 
         <div className="space-y-6">
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-primary" />
@@ -159,7 +159,7 @@ export default function AiConfig() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">

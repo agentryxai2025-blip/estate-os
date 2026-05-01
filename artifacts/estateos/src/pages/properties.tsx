@@ -113,7 +113,7 @@ export default function Properties() {
                         property.status === 'leased' ? 'default' : 
                         property.status === 'vacant' ? 'destructive' : 
                         'secondary'
-                      } className={property.status === 'leased' ? 'bg-green-500/20 text-green-500 hover:bg-green-500/30' : ''}>
+                      } className={property.status === 'leased' ? 'bg-green-500/20 text-green-600 hover:bg-green-500/30' : ''}>
                         {property.status.replace('-', ' ').toUpperCase()}
                       </Badge>
                     </div>
@@ -133,7 +133,7 @@ export default function Properties() {
                         {property.suburb} • {property.type}
                       </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                    <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between">
                       <div className="flex gap-3 text-sm text-muted-foreground">
                         <div className="flex items-center"><Bed className="h-4 w-4 mr-1" /> {property.bedrooms}</div>
                         <div className="flex items-center"><Bath className="h-4 w-4 mr-1" /> {property.bathrooms}</div>
@@ -150,7 +150,7 @@ export default function Properties() {
         <Card className="bg-card/50 overflow-hidden">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/5 hover:bg-transparent">
+              <TableRow className="border-border/50 hover:bg-transparent">
                 <TableHead>Address</TableHead>
                 <TableHead>Type</TableHead>
                 <TableHead>Status</TableHead>
@@ -161,7 +161,7 @@ export default function Properties() {
             </TableHeader>
             <TableBody>
               {filteredProperties?.map((property) => (
-                <TableRow key={property.id} className="border-white/5 hover:bg-white/5 cursor-pointer">
+                <TableRow key={property.id} className="border-border/30 hover:bg-muted/50 cursor-pointer">
                   <TableCell>
                     <div className="font-medium">{property.address}</div>
                     <div className="text-xs text-muted-foreground">{property.suburb}</div>
@@ -177,7 +177,7 @@ export default function Properties() {
                       property.status === 'leased' ? 'default' : 
                       property.status === 'vacant' ? 'destructive' : 
                       'secondary'
-                    } className={property.status === 'leased' ? 'bg-green-500/20 text-green-500' : ''}>
+                    } className={property.status === 'leased' ? 'bg-green-500/20 text-green-600' : ''}>
                       {property.status.replace('-', ' ').toUpperCase()}
                     </Badge>
                   </TableCell>

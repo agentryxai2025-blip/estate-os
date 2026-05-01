@@ -24,8 +24,8 @@ export default function Landlords() {
     switch(risk) {
       case 'critical': return 'text-destructive';
       case 'high': return 'text-orange-500';
-      case 'medium': return 'text-yellow-500';
-      default: return 'text-green-500';
+      case 'medium': return 'text-yellow-600';
+      default: return 'text-green-600';
     }
   };
 
@@ -74,12 +74,12 @@ export default function Landlords() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Card className={`bg-card/50 overflow-hidden border-white/5 h-full ${isHighRisk ? 'border-destructive/30' : ''}`}>
+                <Card className={`bg-card/50 overflow-hidden border-border/50 h-full ${isHighRisk ? 'border-destructive/30' : ''}`}>
                   {isHighRisk && <div className="h-1 w-full bg-destructive" />}
                   <CardHeader className="pb-4">
                     <div className="flex justify-between items-start gap-4">
                       <div className="flex items-center gap-4">
-                        <Avatar className="h-12 w-12 border border-white/10">
+                        <Avatar className="h-12 w-12 border border-border">
                           <AvatarFallback className="bg-primary/20 text-primary">{landlord.avatarInitials}</AvatarFallback>
                         </Avatar>
                         <div>
@@ -108,7 +108,7 @@ export default function Landlords() {
                       <div className="flex items-center gap-2"><Phone className="h-4 w-4" /> {landlord.phone}</div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border/50">
                       <div>
                         <h4 className="text-sm font-medium mb-2 text-muted-foreground">Top Risk Factors</h4>
                         <ul className="space-y-1">

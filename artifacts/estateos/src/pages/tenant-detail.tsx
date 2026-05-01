@@ -36,18 +36,18 @@ export default function TenantDetail() {
       animate={{ opacity: 1, y: 0 }}
       className="space-y-6"
     >
-      <Card className={`border-white/5 bg-card/50 overflow-hidden relative ${tenant.arrears > 0 ? 'border-destructive/30' : ''}`}>
+      <Card className={`border-border/50 bg-card/50 overflow-hidden relative ${tenant.arrears > 0 ? 'border-destructive/30' : ''}`}>
         {tenant.arrears > 0 && <div className="absolute top-0 left-0 right-0 h-1 bg-destructive" />}
         <CardContent className="p-8">
           <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
-            <Avatar className="h-24 w-24 border-2 border-white/10">
+            <Avatar className="h-24 w-24 border-2 border-border">
               <AvatarFallback className="text-3xl bg-primary/20 text-primary">{tenant.avatarInitials}</AvatarFallback>
             </Avatar>
             <div className="flex-1 space-y-2">
               <div className="flex justify-between items-start">
                 <div>
                   <h1 className="text-3xl font-bold">{tenant.name}</h1>
-                  <Badge variant={tenant.status === 'active' ? 'default' : 'secondary'} className={`mt-2 ${tenant.status === 'active' ? 'bg-green-500/20 text-green-500' : ''}`}>
+                  <Badge variant={tenant.status === 'active' ? 'default' : 'secondary'} className={`mt-2 ${tenant.status === 'active' ? 'bg-green-500/20 text-green-600' : ''}`}>
                     {tenant.status.toUpperCase()}
                   </Badge>
                 </div>
@@ -69,7 +69,7 @@ export default function TenantDetail() {
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-card/50 border-white/5">
+        <Card className="bg-card/50 border-border/50">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <Calendar className="h-5 w-5 text-primary" />
@@ -77,15 +77,15 @@ export default function TenantDetail() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex justify-between py-2 border-b border-white/5">
+            <div className="flex justify-between py-2 border-b border-border/50">
               <span className="text-muted-foreground">Weekly Rent</span>
               <span className="font-bold">{formatCurrency(tenant.weeklyRent)}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/5">
+            <div className="flex justify-between py-2 border-b border-border/50">
               <span className="text-muted-foreground">Lease Start</span>
               <span className="font-medium">{new Date(tenant.leaseStart).toLocaleDateString()}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/5">
+            <div className="flex justify-between py-2 border-b border-border/50">
               <span className="text-muted-foreground">Lease End</span>
               <span className="font-medium">{new Date(tenant.leaseEnd).toLocaleDateString()}</span>
             </div>

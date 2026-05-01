@@ -102,7 +102,7 @@ export default function Dashboard() {
           <Card className="bg-card/50 backdrop-blur border-destructive/20">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
               <CardTitle className="text-sm font-medium text-muted-foreground">Maintenance</CardTitle>
-              <Wrench className="h-4 w-4 text-destructive" />
+              <WrenchIcon className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{summary.openMaintenance}</div>
@@ -127,7 +127,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <motion.div variants={itemVariants} className="lg:col-span-2 space-y-6">
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardHeader>
               <CardTitle>Rent Collection</CardTitle>
               <CardDescription>Monthly collected vs outstanding</CardDescription>
@@ -152,7 +152,7 @@ export default function Dashboard() {
           </Card>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-card/50 border-white/5">
+            <Card className="bg-card/50 border-border/50">
               <CardHeader>
                 <CardTitle>Property Status</CardTitle>
               </CardHeader>
@@ -180,7 +180,7 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-card/50 border-white/5">
+            <Card className="bg-card/50 border-border/50">
               <CardHeader>
                 <CardTitle>Landlord Churn Risk</CardTitle>
               </CardHeader>
@@ -206,8 +206,8 @@ export default function Dashboard() {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <Card className="h-full bg-card/50 border-white/5 flex flex-col">
-            <CardHeader className="pb-3 border-b border-white/5">
+          <Card className="h-full bg-card/50 border-border/50 flex flex-col">
+            <CardHeader className="pb-3 border-b border-border/50">
               <CardTitle className="flex items-center gap-2">
                 <ActivitySquare className="h-5 w-5 text-primary" />
                 Live Activity Feed
@@ -252,7 +252,6 @@ export default function Dashboard() {
   );
 }
 
-// Icon for missing import
-function Wrench(props: React.SVGProps<SVGSVGElement>) {
+function WrenchIcon(props: React.SVGProps<SVGSVGElement>) {
   return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>;
 }

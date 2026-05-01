@@ -35,6 +35,7 @@ export default function PropertyDetail() {
       animate={{ opacity: 1, y: 0 }}
       className="space-y-6"
     >
+      {/* Image hero — white text intentional: always overlaid on dark photo gradient */}
       <div className="relative h-64 md:h-80 rounded-xl overflow-hidden bg-muted">
         {property.imageUrl ? (
           <img src={property.imageUrl} alt={property.address} className="w-full h-full object-cover" />
@@ -48,7 +49,7 @@ export default function PropertyDetail() {
           <div className="flex justify-between items-end">
             <div>
               <div className="flex gap-2 mb-2">
-                <Badge variant={property.status === 'leased' ? 'default' : 'secondary'} className={property.status === 'leased' ? 'bg-green-500/20 text-green-500 border-green-500/30' : ''}>
+                <Badge variant={property.status === 'leased' ? 'default' : 'secondary'} className={property.status === 'leased' ? 'bg-green-500/20 text-green-400 border-green-500/30' : ''}>
                   {property.status.toUpperCase()}
                 </Badge>
                 <Badge variant="outline" className="bg-black/50 backdrop-blur-md border-white/10 text-white">{property.type}</Badge>
@@ -72,7 +73,7 @@ export default function PropertyDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <FileText className="h-5 w-5 text-primary" />
@@ -93,7 +94,7 @@ export default function PropertyDetail() {
             </CardContent>
           </Card>
           
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <User className="h-5 w-5 text-primary" />
@@ -107,7 +108,7 @@ export default function PropertyDetail() {
         </div>
 
         <div className="space-y-6">
-          <Card className="bg-card/50 border-white/5">
+          <Card className="bg-card/50 border-border/50">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Wrench className="h-5 w-5 text-primary" />

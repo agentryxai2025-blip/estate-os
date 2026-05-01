@@ -71,7 +71,7 @@ export default function Tenants() {
         <Card className="bg-card/50 overflow-hidden">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/5 hover:bg-transparent">
+              <TableRow className="border-border/50 hover:bg-transparent">
                 <TableHead>Tenant</TableHead>
                 <TableHead>Property</TableHead>
                 <TableHead>Contact</TableHead>
@@ -87,11 +87,11 @@ export default function Tenants() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className={`border-white/5 hover:bg-white/5 transition-colors cursor-pointer ${tenant.arrears > 0 ? 'bg-destructive/5' : ''}`}
+                  className={`border-border/30 hover:bg-muted/50 transition-colors cursor-pointer ${tenant.arrears > 0 ? 'bg-destructive/5' : ''}`}
                 >
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <Avatar className="h-9 w-9 border border-white/10">
+                      <Avatar className="h-9 w-9 border border-border">
                         <AvatarFallback className="bg-primary/20 text-primary">{tenant.avatarInitials}</AvatarFallback>
                       </Avatar>
                       <div>
@@ -114,7 +114,7 @@ export default function Tenants() {
                   </TableCell>
                   <TableCell className="font-medium">{formatCurrency(tenant.weeklyRent)}/w</TableCell>
                   <TableCell>
-                    <Badge variant={tenant.status === 'active' ? 'default' : 'secondary'} className={tenant.status === 'active' ? 'bg-green-500/20 text-green-500' : ''}>
+                    <Badge variant={tenant.status === 'active' ? 'default' : 'secondary'} className={tenant.status === 'active' ? 'bg-green-500/20 text-green-600' : ''}>
                       {tenant.status.toUpperCase()}
                     </Badge>
                   </TableCell>

@@ -62,10 +62,10 @@ export default function Maintenance() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <Card className={`bg-card/50 overflow-hidden transition-colors border-white/5 ${isP1 ? 'border-red-500/30 shadow-[0_0_20px_rgba(220,38,38,0.1)]' : ''}`}>
+                  <Card className={`bg-card/50 overflow-hidden transition-colors border-border/50 ${isP1 ? 'border-red-500/30 shadow-[0_0_20px_rgba(220,38,38,0.1)]' : ''}`}>
                     {isP1 && <div className="h-1 w-full bg-red-500 animate-pulse" />}
                     <div 
-                      className="p-6 cursor-pointer hover:bg-white/5 transition-colors"
+                      className="p-6 cursor-pointer hover:bg-muted/40 transition-colors"
                       onClick={() => setExpandedId(isExpanded ? null : ticket.id)}
                     >
                       <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
@@ -102,14 +102,14 @@ export default function Maintenance() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="border-t border-white/5"
+                          className="border-t border-border/50"
                         >
-                          <CardContent className="p-6 bg-black/20">
+                          <CardContent className="p-6 bg-muted/30">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                               <div className="space-y-6">
                                 <div>
                                   <h4 className="text-sm font-medium text-muted-foreground mb-2">Original Request</h4>
-                                  <p className="text-sm bg-card p-4 rounded-md border border-white/5">{ticket.description}</p>
+                                  <p className="text-sm bg-card p-4 rounded-md border border-border/50">{ticket.description}</p>
                                 </div>
                                 <div>
                                   <h4 className="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-2">
@@ -129,7 +129,7 @@ export default function Maintenance() {
                                 <div>
                                   <h4 className="text-sm font-medium text-muted-foreground mb-2">Suggested Vendors</h4>
                                   <div className="space-y-2">
-                                    <div className="flex items-center justify-between bg-card p-3 rounded-md border border-white/5">
+                                    <div className="flex items-center justify-between bg-card p-3 rounded-md border border-border/50">
                                       <div>
                                         <div className="text-sm font-medium">QuickFix Plumbing</div>
                                         <div className="text-xs text-muted-foreground">Available today • Rating 4.8/5</div>
@@ -140,7 +140,7 @@ export default function Maintenance() {
                                 </div>
                                 
                                 {ticket.pendingApproval && (
-                                  <div className="bg-card p-4 rounded-md border border-white/5 space-y-4">
+                                  <div className="bg-card p-4 rounded-md border border-border/50 space-y-4">
                                     <h4 className="text-sm font-medium flex items-center gap-2">
                                       <MessageSquare className="h-4 w-4" /> AI Suggested Action
                                     </h4>

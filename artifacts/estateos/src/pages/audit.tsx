@@ -46,10 +46,10 @@ export default function Audit() {
           </div>
         </Card>
       ) : (
-        <Card className="bg-card/50 overflow-hidden border-white/5">
+        <Card className="bg-card/50 overflow-hidden border-border/50">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/5 hover:bg-transparent">
+              <TableRow className="border-border/50 hover:bg-transparent">
                 <TableHead>Timestamp</TableHead>
                 <TableHead>Task / User</TableHead>
                 <TableHead>Model / Provider</TableHead>
@@ -66,7 +66,7 @@ export default function Audit() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.03 }}
-                  className="border-white/5 hover:bg-white/5 font-mono text-sm"
+                  className="border-border/30 hover:bg-muted/50 font-mono text-sm"
                 >
                   <TableCell className="text-muted-foreground whitespace-nowrap">
                     {new Date(log.timestamp).toLocaleString([], { dateStyle: 'short', timeStyle: 'medium' })}
@@ -76,10 +76,10 @@ export default function Audit() {
                     <div className="text-xs text-muted-foreground font-sans">{log.userName}</div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="bg-white/5 text-xs">{log.model}</Badge>
+                    <Badge variant="secondary" className="text-xs">{log.model}</Badge>
                   </TableCell>
                   <TableCell className="text-right text-muted-foreground">
-                    <span className="text-blue-400">{log.inputTokens}</span> / <span className="text-green-400">{log.outputTokens}</span>
+                    <span className="text-blue-500">{log.inputTokens}</span> / <span className="text-green-600">{log.outputTokens}</span>
                   </TableCell>
                   <TableCell className="text-right">
                     <span className={log.latencyMs > 2000 ? 'text-orange-500' : 'text-muted-foreground'}>{log.latencyMs}ms</span>
@@ -89,7 +89,7 @@ export default function Audit() {
                   </TableCell>
                   <TableCell className="text-right">
                     {log.status === 'success' ? (
-                      <CheckCircle2 className="h-4 w-4 text-green-500 inline-block" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 inline-block" />
                     ) : (
                       <AlertCircle className="h-4 w-4 text-destructive inline-block" />
                     )}

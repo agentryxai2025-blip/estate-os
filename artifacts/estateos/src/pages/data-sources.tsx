@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Database, Activity, RefreshCw, AlertCircle, ArrowRight, Server, Globe, DownloadCloud, PlayCircle } from "lucide-react";
+import { Database, Activity, RefreshCw, AlertCircle, Server, Globe, DownloadCloud } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -14,7 +14,6 @@ export default function DataSources() {
   const { data: initialEvents, isLoading: loadingEvents } = useListIngestionEvents({ query: { queryKey: getListIngestionEventsQueryKey() } });
   const triggerMutation = useTriggerIngestion();
 
-  // Local state for simulating live events
   const [liveEvents, setLiveEvents] = useState<any[]>([]);
   const [sources, setSources] = useState<any[]>([]);
   const [isSimulating, setIsSimulating] = useState(true);
@@ -24,7 +23,6 @@ export default function DataSources() {
     if (initialSources) setSources(initialSources);
   }, [initialEvents, initialSources]);
 
-  // Live simulation effect
   useEffect(() => {
     if (!isSimulating || !sources.length) return;
 
@@ -45,7 +43,6 @@ export default function DataSources() {
 
       setLiveEvents(prev => [newEvent, ...prev].slice(0, 20));
       
-      // Update source counters
       setSources(prev => prev.map(s => {
         if (s.id === source.id) {
           return {
@@ -93,7 +90,7 @@ export default function DataSources() {
             </span>
             Live Pipeline Active
           </Badge>
-          <Button onClick={handleTrigger} disabled={triggerMutation.isPending} className="bg-card hover:bg-accent border border-white/10">
+          <Button onClick={handleTrigger} disabled={triggerMutation.isPending} className="bg-card hover:bg-accent border border-border">
             <RefreshCw className={`h-4 w-4 mr-2 ${triggerMutation.isPending ? 'animate-spin' : ''}`} />
             Trigger Manual Sync
           </Button>
@@ -113,7 +110,7 @@ export default function DataSources() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Card className="bg-card/50 border-white/5 h-full relative overflow-hidden group">
+              <Card className="bg-card/50 border-border/50 h-full relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   {getSystemIcon(source.system)}
                 </div>
@@ -128,11 +125,11 @@ export default function DataSources() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex gap-2">
-                    <Badge variant="secondary" className="text-[10px] bg-white/5">{source.integrationMode}</Badge>
-                    <Badge variant="secondary" className="text-[10px] bg-white/5">{source.phase}</Badge>
+                    <Badge variant="secondary" className="text-[10px]">{source.integrationMode}</Badge>
+                    <Badge variant="secondary" className="text-[10px]">{source.phase}</Badge>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t border-white/5">
+                  <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t border-border/50">
                     <div>
                       <p className="text-muted-foreground text-xs">Records</p>
                       <p className="font-mono text-primary font-bold">{source.recordsIngested.toLocaleString()}</p>
@@ -143,7 +140,7 @@ export default function DataSources() {
                     </div>
                   </div>
                   
-                  <div className="text-xs text-muted-foreground flex items-center justify-between bg-black/20 p-2 rounded">
+                  <div className="text-xs text-muted-foreground flex items-center justify-between bg-muted/50 p-2 rounded">
                     <span>Last Sync</span>
                     <span className="font-mono">{new Date(source.lastSync).toLocaleTimeString()}</span>
                   </div>
@@ -154,14 +151,14 @@ export default function DataSources() {
         </div>
       )}
 
-      <Card className="bg-black/40 border-white/10 shadow-2xl overflow-hidden mt-8">
-        <CardHeader className="border-b border-white/5 bg-card/30">
+      <Card className="border-border/50 shadow-xl overflow-hidden mt-8">
+        <CardHeader className="border-b border-border/50 bg-muted/30">
           <CardTitle className="text-lg flex items-center gap-2">
             <Activity className="h-5 w-5 text-primary" />
             Global Event Stream
           </CardTitle>
         </CardHeader>
-        <CardContent className="p-0">
+        <CardContent className="p-0 bg-muted/20">
           <div className="h-[400px] overflow-y-auto p-4 space-y-2 font-mono text-sm relative">
             <AnimatePresence>
               {liveEvents.map((event, i) => (
@@ -169,28 +166,28 @@ export default function DataSources() {
                   key={event.id}
                   initial={{ opacity: 0, x: -20, height: 0 }}
                   animate={{ opacity: 1, x: 0, height: 'auto' }}
-                  className="flex items-center gap-4 py-2 border-b border-white/5 text-muted-foreground"
+                  className="flex items-center gap-4 py-2 border-b border-border/30 text-foreground/70"
                 >
                   <span className="text-primary/70 shrink-0 w-24">{new Date(event.timestamp).toLocaleTimeString([], {hour12: false, fractionalSecondDigits: 2})}</span>
-                  <Badge variant="outline" className="shrink-0 w-32 justify-center bg-white/5 border-white/10">{event.sourceName}</Badge>
+                  <Badge variant="outline" className="shrink-0 w-32 justify-center bg-muted/60 border-border/60">{event.sourceName}</Badge>
                   <span className={`shrink-0 w-36 ${
                     event.eventType.includes('error') ? 'text-destructive' : 
-                    event.eventType.includes('completed') ? 'text-green-500' : 'text-white/80'
+                    event.eventType.includes('completed') ? 'text-green-600' : 'text-foreground/80'
                   }`}>
                     {event.eventType}
                   </span>
-                  <span className="flex-1 truncate">
+                  <span className="flex-1 truncate text-muted-foreground">
                     {event.recordsAffected > 0 ? `Processed ${event.recordsAffected} records` : 'System event'}
                   </span>
                   {event.status === 'success' ? (
-                    <div className="h-2 w-2 rounded-full bg-green-500/50" />
+                    <div className="h-2 w-2 rounded-full bg-green-500/70" />
                   ) : (
                     <AlertCircle className="h-4 w-4 text-destructive" />
                   )}
                 </motion.div>
               ))}
             </AnimatePresence>
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
           </div>
         </CardContent>
       </Card>

@@ -69,7 +69,7 @@ export default function Leases() {
         <Card className="bg-card/50 overflow-hidden">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/5 hover:bg-transparent">
+              <TableRow className="border-border/50 hover:bg-transparent">
                 <TableHead>Property / Tenant</TableHead>
                 <TableHead>Dates</TableHead>
                 <TableHead>Rent</TableHead>
@@ -89,7 +89,7 @@ export default function Leases() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className={`border-white/5 hover:bg-white/5 transition-colors cursor-pointer ${expiringSoon ? 'bg-orange-500/5' : expired ? 'bg-destructive/5' : ''}`}
+                    className={`border-border/30 hover:bg-muted/50 transition-colors cursor-pointer ${expiringSoon ? 'bg-orange-500/5' : expired ? 'bg-destructive/5' : ''}`}
                   >
                     <TableCell>
                       <div className="font-medium">{lease.propertyAddress}</div>
@@ -105,7 +105,7 @@ export default function Leases() {
                     <TableCell className="font-medium">{formatCurrency(lease.weeklyRent)}/w</TableCell>
                     <TableCell>
                       {lease.documentParsed ? (
-                        <div className="flex items-center gap-2 text-sm text-green-500">
+                        <div className="flex items-center gap-2 text-sm text-green-600">
                           <CheckCircle2 className="h-4 w-4" /> Parsed
                         </div>
                       ) : (
@@ -115,7 +115,7 @@ export default function Leases() {
                       )}
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className={lease.complianceStatus === 'compliant' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-destructive/10 text-destructive border-destructive/20'}>
+                      <Badge variant="outline" className={lease.complianceStatus === 'compliant' ? 'bg-green-500/10 text-green-600 border-green-500/20' : 'bg-destructive/10 text-destructive border-destructive/20'}>
                         {lease.complianceStatus === 'compliant' ? <FileCheck className="h-3 w-3 mr-1" /> : <AlertCircle className="h-3 w-3 mr-1" />}
                         {lease.complianceStatus}
                       </Badge>
