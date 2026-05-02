@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Database, Globe, Users, FileCheck, Brain, Zap, Shield, BarChart3, Bell, Workflow, ArrowRight, CheckCircle2, Building2, Mail, Wrench, DollarSign, ChevronDown } from "lucide-react";
+import { Database, Globe, Users, FileCheck, Brain, Zap, Shield, BarChart3, Bell, Workflow, ArrowRight, CheckCircle2, Building2, Mail, Wrench, DollarSign, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -178,33 +178,78 @@ export default function Architecture() {
           </div>
         </motion.div>
 
-        {/* Animated connection lines + downward arrows */}
-        <div className="relative h-16 grid grid-cols-4 px-6 md:px-8">
-          {VERTICALS.map((v, i) => (
-            <div key={v.id} className="flex justify-center items-stretch">
-              <motion.div
-                initial={{ scaleY: 0, opacity: 0 }}
-                animate={{ scaleY: 1, opacity: 1 }}
-                transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
-                style={{ originY: 0 }}
-                className="relative flex flex-col items-center"
-              >
-                {/* Animated flowing line */}
-                <div
-                  className="w-0.5 flex-1 relative overflow-hidden"
-                  style={{ background: `${v.colorCss.line}30` }}
-                >
-                  <motion.div
-                    className="absolute top-0 left-0 w-full"
-                    style={{ background: v.colorCss.line, height: "40%" }}
-                    animate={{ top: ["0%", "100%"] }}
-                    transition={{ duration: 1.4, repeat: Infinity, ease: "linear", delay: i * 0.3 }}
-                  />
-                </div>
-                <ChevronDown className="h-4 w-4 shrink-0" style={{ color: v.colorCss.line }} />
-              </motion.div>
+        {/* Bidirectional connection zone */}
+        <div className="relative">
+          {/* Flow legend */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center gap-8 pt-3 pb-1"
+          >
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <ChevronUp className="h-3 w-3" />
+              <div className="w-8 h-px bg-muted-foreground/40" />
+              <span>Raw data flows up</span>
             </div>
-          ))}
+            <div className="flex items-center gap-1.5 text-xs text-primary font-medium">
+              <span>Intelligence flows down</span>
+              <div className="w-8 h-px bg-primary/60" />
+              <ChevronDown className="h-3 w-3 text-primary" />
+            </div>
+          </motion.div>
+
+          {/* The two-lane connectors */}
+          <div className="h-16 grid grid-cols-4 px-6 md:px-8">
+            {VERTICALS.map((v, i) => (
+              <div key={v.id} className="flex justify-center items-stretch">
+                <div className="flex gap-3 items-stretch">
+
+                  {/* ↑ Data lane — muted, flows upward */}
+                  <motion.div
+                    initial={{ scaleY: 0, opacity: 0 }}
+                    animate={{ scaleY: 1, opacity: 1 }}
+                    transition={{ delay: 0.38 + i * 0.08, duration: 0.4 }}
+                    style={{ originY: 0 }}
+                    className="relative flex flex-col items-center"
+                  >
+                    <ChevronUp className="h-3.5 w-3.5 shrink-0 text-muted-foreground/50" />
+                    <div className="w-px flex-1 relative overflow-hidden bg-muted-foreground/15">
+                      <motion.div
+                        className="absolute left-0 w-full rounded-full"
+                        style={{ background: "hsl(var(--muted-foreground) / 0.5)", height: "35%" }}
+                        animate={{ bottom: ["0%", "110%"] }}
+                        transition={{ duration: 1.6, repeat: Infinity, ease: "linear", delay: i * 0.25 }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* ↓ Intelligence lane — coloured, flows downward */}
+                  <motion.div
+                    initial={{ scaleY: 0, opacity: 0 }}
+                    animate={{ scaleY: 1, opacity: 1 }}
+                    transition={{ delay: 0.44 + i * 0.08, duration: 0.4 }}
+                    style={{ originY: 0 }}
+                    className="relative flex flex-col items-center"
+                  >
+                    <div
+                      className="w-px flex-1 relative overflow-hidden"
+                      style={{ background: `${v.colorCss.line}25` }}
+                    >
+                      <motion.div
+                        className="absolute top-0 left-0 w-full rounded-full"
+                        style={{ background: v.colorCss.line, height: "35%", boxShadow: `0 0 6px ${v.colorCss.line}` }}
+                        animate={{ top: ["0%", "110%"] }}
+                        transition={{ duration: 1.6, repeat: Infinity, ease: "linear", delay: i * 0.25 + 0.8 }}
+                      />
+                    </div>
+                    <ChevronDown className="h-3.5 w-3.5 shrink-0" style={{ color: v.colorCss.line }} />
+                  </motion.div>
+
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* 4 Vertical Columns */}
