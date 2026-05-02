@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AlertTriangle, Clock, Wrench, CheckCircle2, ChevronDown, Activity, DollarSign, MessageSquare } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -40,7 +41,10 @@ export default function Maintenance() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">AI Maintenance Triage</h1>
+        <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+          AI Maintenance Triage
+          <AIBadge size="md" tip="AI reads each report, classifies urgency (P1–P4), identifies root cause, and recommends a vetted vendor — all before a PM touches it." />
+        </h1>
         <p className="text-muted-foreground mt-1">Review and approve AI-triaged maintenance requests.</p>
       </div>
 

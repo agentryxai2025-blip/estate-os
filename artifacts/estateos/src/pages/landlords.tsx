@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Mail, Phone, Building2, AlertTriangle, TrendingDown, Clock, Zap, ChevronRight, ArrowUpDown, CalendarClock, DollarSign } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
@@ -122,7 +123,10 @@ export default function Landlords() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Landlord Rent Roll</h1>
+          <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+            Landlord Rent Roll
+            <AIBadge size="md" tip="AI ranks every landlord by churn probability using 12+ signals: contact recency, vacancy rate, maintenance frequency, complaint history, and local market alternatives." />
+          </h1>
           <p className="text-muted-foreground mt-1">
             AI churn risk monitoring — <span className="text-destructive font-medium">{counts.critical} critical</span> · <span className="text-orange-500 font-medium">{counts.high} high</span> · <span className="text-yellow-600 font-medium">{counts.medium} medium</span> · <span className="text-green-600 font-medium">{counts.low} low</span>
           </p>
@@ -137,6 +141,7 @@ export default function Landlords() {
             <div className="flex items-center gap-2 text-sm font-semibold text-destructive">
               <Zap className="h-4 w-4 fill-destructive" />
               Today's Priority — Needs Attention Now
+              <AIBadge tip="AI surfaces these landlords daily based on risk score trajectory, days since last contact, and upcoming lease events — so no high-risk relationship slips through." />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {priorityLandlords.map(l => {
@@ -270,6 +275,7 @@ export default function Landlords() {
                           <div className="flex items-baseline gap-1">
                             <span className={`text-2xl font-bold tabular-nums ${getChurnRiskColor(landlord.churnRisk)}`}>{landlord.churnScore}</span>
                             <span className="text-xs text-muted-foreground">/ 100</span>
+                            <AIBadge tip="Composite AI score 0–100. Predicts the probability this landlord will leave within 90 days, recalculated nightly from portfolio and contact data." />
                           </div>
                         </div>
                       </div>
@@ -328,6 +334,7 @@ export default function Landlords() {
                         <div className={`p-3 rounded-lg border text-xs ${getChurnRiskBgColor(landlord.churnRisk)}`}>
                           <h4 className={`font-semibold mb-1.5 flex items-center gap-1 ${getChurnRiskColor(landlord.churnRisk)}`}>
                             <Zap className="h-3 w-3" /> AI Recommendation
+                            <AIBadge tip="AI analyses risk signals and generates a specific, actionable outreach strategy tailored to this landlord's situation." />
                           </h4>
                           <p className="text-foreground/80 leading-relaxed">{landlord.recommendedIntervention}</p>
                         </div>
@@ -350,6 +357,7 @@ export default function Landlords() {
                           onClick={() => handleEmail(landlord.name)}
                         >
                           <Mail className="h-3 w-3" /> Draft Email
+                          <AIBadge tip="AI writes a personalised retention email using this landlord's portfolio performance, recent maintenance outcomes, and relationship history." />
                         </Button>
                         <Button
                           variant="ghost"

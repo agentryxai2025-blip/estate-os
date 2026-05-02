@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Activity, Building2, AlertTriangle, FileSignature, Wallet, Users, ChevronRight, ActivitySquare, AlertCircle } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend, PieChart, Pie, Cell } from "recharts";
 import { motion } from "framer-motion";
 
@@ -101,7 +102,9 @@ export default function Dashboard() {
         <motion.div variants={itemVariants}>
           <Card className="bg-card/50 backdrop-blur border-destructive/20">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Maintenance</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                Maintenance <AIBadge tip="AI triages every incoming request by urgency, property risk, and lease terms — routing P1s instantly without manual review." />
+              </CardTitle>
               <WrenchIcon className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
@@ -114,7 +117,9 @@ export default function Dashboard() {
         <motion.div variants={itemVariants}>
           <Card className="bg-card/50 backdrop-blur">
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Arrears</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                Arrears <AIBadge tip="AI detects payment-risk patterns up to 14 days before arrears are formally recorded, so PMs can intervene early." />
+              </CardTitle>
               <AlertTriangle className="h-4 w-4 text-orange-500" />
             </CardHeader>
             <CardContent>
@@ -182,7 +187,10 @@ export default function Dashboard() {
 
             <Card className="bg-card/50 border-border/50">
               <CardHeader>
-                <CardTitle>Landlord Churn Risk</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  Landlord Churn Risk
+                  <AIBadge tip="AI scores each landlord's churn probability using contact recency, vacancy rate, complaint history, and local market alternatives." />
+                </CardTitle>
               </CardHeader>
               <CardContent className="h-[250px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -211,6 +219,7 @@ export default function Dashboard() {
               <CardTitle className="flex items-center gap-2">
                 <ActivitySquare className="h-5 w-5 text-primary" />
                 Live Activity Feed
+                <AIBadge tip="AI-generated actions appear here awaiting human approval — no automated changes execute without PM sign-off." />
               </CardTitle>
             </CardHeader>
             <CardContent className="flex-1 p-0 overflow-hidden relative">

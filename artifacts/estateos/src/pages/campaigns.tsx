@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Megaphone, Mail, Users, Eye, CheckCircle2, ChevronDown, Sparkles } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -38,7 +39,10 @@ export default function Campaigns() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Vendor Campaigns</h1>
+          <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+            Vendor Campaigns
+            <AIBadge size="md" tip="AI drafts personalised weekly vendor updates using listing activity, inspection feedback, enquiry volume, and market comparables — ready for one-click approval." />
+          </h1>
           <p className="text-muted-foreground mt-1">Review AI-drafted weekly vendor updates.</p>
         </div>
       </div>

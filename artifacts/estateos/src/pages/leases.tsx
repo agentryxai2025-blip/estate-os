@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, FileText, AlertCircle, FileCheck, CheckCircle2 } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { motion } from "framer-motion";
 
@@ -31,7 +32,10 @@ export default function Leases() {
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Lease Management</h1>
-          <p className="text-muted-foreground mt-1">Track expiries, compliance, and documents.</p>
+          <p className="text-muted-foreground mt-1 flex items-center gap-1.5">
+            Track expiries, compliance, and documents.
+            <AIBadge tip="AI parses lease PDFs to extract rent review dates, special conditions, and break clauses — and predicts renewal likelihood for expiring leases." />
+          </p>
         </div>
         <Button>New Lease</Button>
       </div>
@@ -73,8 +77,16 @@ export default function Leases() {
                 <TableHead>Property / Tenant</TableHead>
                 <TableHead>Dates</TableHead>
                 <TableHead>Rent</TableHead>
-                <TableHead>Document</TableHead>
-                <TableHead>Compliance</TableHead>
+                <TableHead>
+                  <span className="flex items-center gap-1.5">
+                    Document <AIBadge tip="AI reads uploaded lease PDFs and extracts key clauses, dates, and obligations automatically." />
+                  </span>
+                </TableHead>
+                <TableHead>
+                  <span className="flex items-center gap-1.5">
+                    Compliance <AIBadge tip="AI cross-checks each lease against current RTA regulations and flags non-compliant clauses before they become a liability." />
+                  </span>
+                </TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Mail, Phone, ArrowRight, AlertCircle } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
@@ -33,7 +34,10 @@ export default function Tenants() {
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Tenants</h1>
-          <p className="text-muted-foreground mt-1">Manage tenants and track arrears.</p>
+          <p className="text-muted-foreground mt-1 flex items-center gap-1.5">
+            Manage tenants and track arrears.
+            <AIBadge tip="AI builds a risk profile per tenant from payment history, maintenance behaviour, and lease compliance — flagging issues before they escalate." />
+          </p>
         </div>
         <Button>Add Tenant</Button>
       </div>
@@ -76,7 +80,11 @@ export default function Tenants() {
                 <TableHead>Property</TableHead>
                 <TableHead>Contact</TableHead>
                 <TableHead>Rent</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>
+                  <span className="flex items-center gap-1.5">
+                    Status <AIBadge tip="AI monitors payment patterns and flags tenants at risk of arrears up to 2 weeks before the formal breach date." />
+                  </span>
+                </TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>

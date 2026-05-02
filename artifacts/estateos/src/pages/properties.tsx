@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, MapPin, Bed, Bath, Home, ArrowRight, Grid, List as ListIcon } from "lucide-react";
+import { AIBadge } from "@/components/ai-badge";
 import { motion } from "framer-motion";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -46,7 +47,10 @@ export default function Properties() {
       <div className="flex flex-col sm:flex-row justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Properties</h1>
-          <p className="text-muted-foreground mt-1">Manage portfolio and track status.</p>
+          <p className="text-muted-foreground mt-1 flex items-center gap-1.5">
+            Manage portfolio and track status.
+            <AIBadge tip="AI forecasts vacancy duration for empty properties and recommends optimal re-list pricing based on suburb trends and comparable listings." />
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon" onClick={() => setViewMode("grid")} className={viewMode === "grid" ? "bg-primary/20 text-primary" : ""}>
