@@ -94,7 +94,7 @@ const ASSISTANTS = [
   {
     id: "a2",
     name: "James Patel",
-    role: "Sales Associate",
+    role: "Sales Assistant",
     initials: "JP",
     tenure: "14 months with Vedant",
     callsThisWeek: 15,
@@ -122,7 +122,7 @@ const ASSISTANTS = [
   {
     id: "a4",
     name: "Liam O'Brien",
-    role: "Junior Associate",
+    role: "Junior Assistant",
     initials: "LO",
     tenure: "4 months with Vedant",
     callsThisWeek: 12,
