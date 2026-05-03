@@ -398,19 +398,33 @@ export default function TeamAlignment() {
                 </div>
               </div>
               <button onClick={() => setShowPlaybook(!showPlaybook)} className="text-xs text-primary hover:underline flex items-center gap-1 shrink-0">
-                {showPlaybook ? "Hide" : "View"} the 6 metrics
+                {showPlaybook ? "Hide" : "View"} metrics
                 {showPlaybook ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
               </button>
             </div>
 
             {/* Vedant's metric grid */}
-            <MetricGrid metrics={VEDANT.metrics} showVedant />
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Alignment Metrics</span>
+                <Badge variant="outline" className="text-[10px] bg-yellow-500/8 text-yellow-600 border-yellow-500/20 gap-1">
+                  <Zap className="h-2.5 w-2.5" /> Example metrics — Vedant defines his own
+                </Badge>
+              </div>
+              <MetricGrid metrics={VEDANT.metrics} showVedant />
+            </div>
 
             <AnimatePresence>
               {showPlaybook && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   <div className="border-t border-border/50 pt-4 space-y-2">
-                    <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wide mb-3">What Vedant does on every call — what each metric measures:</p>
+                    <div className="bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3 mb-4">
+                      <p className="text-xs font-semibold text-yellow-600 mb-1">These 6 metrics are placeholders — illustrative examples of what alignment scoring looks like.</p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        In practice, Vedant defines his own metrics — the behaviours he considers non-negotiable on every call. He could use all 6 of these, swap some out, rename them, or add entirely different ones. The AI learns to detect whatever patterns he nominates, from his actual call recordings.
+                      </p>
+                    </div>
+                    <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wide mb-3">Example metric descriptions — based on Vedant's approach:</p>
                     {METRICS.map((m, i) => (
                       <div key={m.id} className="flex items-start gap-3 text-xs">
                         <div className="h-5 w-5 rounded-full bg-primary/15 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">{i + 1}</div>
