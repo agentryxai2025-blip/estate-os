@@ -4,10 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AIBadge } from "@/components/ai-badge";
 import {
-  Phone, ChevronDown, ChevronUp, Star, AlertTriangle,
+  ChevronDown, ChevronUp, Star, AlertTriangle,
   TrendingUp, Mic, Brain, Target,
-  CheckCircle2, XCircle, Zap, Award, Users, ArrowRight,
-  ShieldCheck, Layers
+  CheckCircle2, XCircle, Zap, Award, Users,
+  ShieldCheck, Layers, GitBranch, Building2, Globe
 } from "lucide-react";
 
 const VEDANT = {
@@ -311,11 +311,14 @@ export default function TeamAlignment() {
         <div className="flex flex-col sm:flex-row justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2 flex-wrap">
-              Team Alignment
+              Branch Alignment
               <AIBadge size="md" tip="AI captures every call made by Vedant's team, scores each one against Vedant's own approach, and surfaces the exact divergences each week." />
+              <Badge variant="outline" className="text-[10px] bg-primary/8 text-primary border-primary/25 gap-1 font-normal">
+                <GitBranch className="h-2.5 w-2.5" /> Pilot · Vedant's Branch
+              </Badge>
             </h1>
             <p className="text-muted-foreground mt-1">
-              Vedant's 5 assistants, aligned to handle the routine 80% — his way.
+              Vedant's 5 assistants handle the routine 80%, his way — freeing him for the critical 20%.
             </p>
           </div>
           <div className="flex items-center gap-2 self-start flex-wrap">
@@ -490,19 +493,19 @@ export default function TeamAlignment() {
         </div>
       </div>
 
-      {/* How it works — with silent signal */}
+      {/* How it works */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
         <Card className="bg-muted/15 border-border/30">
           <CardContent className="p-5 space-y-4">
             <h3 className="text-sm font-semibold flex items-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> How alignment works
-              <AIBadge tip="The AI model is built on Vedant's own calls — not an off-the-shelf real estate template. This means it captures his specific language, not generic industry best practice." />
+              <Zap className="h-4 w-4 text-primary" /> How branch alignment works
+              <AIBadge tip="The AI model is built on Vedant's own calls — not an off-the-shelf real estate template. It captures his specific language, not generic industry best practice." />
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { step: "01", label: "Capture", icon: Mic, desc: "Every call by Vedant and his assistants is recorded, transcribed, and stored. All with consent and full privacy controls." },
-                { step: "02", label: "Learn", icon: Brain, desc: "AI builds Vedant's specific playbook from his calls — his discovery sequence, his urgency language, his objection responses. Not a template — his actual patterns." },
-                { step: "03", label: "Align", icon: ShieldCheck, desc: "Each assistant gets a weekly focus: one specific divergence to close. Vedant gets a Monday view of where his approach is landing — and where to step in." },
+                { step: "01", label: "Capture", icon: Mic, desc: "Every call by Vedant and his assistants is recorded and transcribed. Consent-first, full privacy controls." },
+                { step: "02", label: "Learn", icon: Brain, desc: "AI builds Vedant's playbook from his actual calls — his discovery sequence, his urgency language, his objection responses. Not a template. His patterns." },
+                { step: "03", label: "Align", icon: ShieldCheck, desc: "Each assistant gets one weekly focus. Vedant gets a Monday view of where his approach is landing — and where to step in for the critical 20%." },
               ].map(item => (
                 <div key={item.step} className="flex gap-3">
                   <div className="h-8 w-8 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center shrink-0">
@@ -515,11 +518,87 @@ export default function TeamAlignment() {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* What this scales to — the vision panel */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }}>
+        <Card className="bg-card/40 border-border/40 overflow-hidden">
+          <div className="h-1 w-full bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
+          <CardContent className="p-5 space-y-4">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-sm font-semibold flex items-center gap-2">
+                  <GitBranch className="h-4 w-4 text-primary" /> What one branch becomes
+                </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Vedant's branch is the pilot. The same model extends to any group — once a source playbook exists, any branch can be aligned to it.
+                </p>
+              </div>
+              <Badge variant="outline" className="text-[10px] bg-muted/30 shrink-0">Roadmap</Badge>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                {
+                  phase: "Now",
+                  icon: GitBranch,
+                  label: "Vedant's Branch",
+                  detail: "5 assistants aligned to the Selling Principal's approach. Routine 80% handled autonomously. Vedant reserved for the critical 20%.",
+                  status: "active",
+                  branches: ["Vedant Patel (source)", "Sophie Chen", "James Patel", "Mia Russo", "Liam O'Brien", "Priya Watt"],
+                },
+                {
+                  phase: "Next",
+                  icon: Building2,
+                  label: "Sales Team Branch",
+                  detail: "All TAG sales agents aligned to a shared sales playbook — consistent language on pricing, objections, urgency. The principal's strategy reaches every client conversation.",
+                  status: "upcoming",
+                  branches: ["TAG Sales Playbook (source)", "All sales agents", "Cross-agent consistency", "Weekly team digest"],
+                },
+                {
+                  phase: "Future",
+                  icon: Globe,
+                  label: "Org-Wide Alignment",
+                  detail: "Every team in TAG — PM, sales, BDM, leasing — aligned to their respective playbook. One leadership view across all branches. TAG's strategy becomes the operating system.",
+                  status: "vision",
+                  branches: ["PM team", "BDM branch", "Leasing branch", "Operations branch"],
+                },
+              ].map((row) => (
+                <div
+                  key={row.phase}
+                  className={`rounded-lg border p-4 space-y-3 ${row.status === "active" ? "bg-primary/5 border-primary/25" : row.status === "upcoming" ? "bg-muted/30 border-border/50" : "bg-muted/15 border-border/30 opacity-80"}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <row.icon className={`h-4 w-4 ${row.status === "active" ? "text-primary" : "text-muted-foreground"}`} />
+                      <span className="text-sm font-semibold">{row.label}</span>
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className={`text-[10px] ${row.status === "active" ? "bg-green-500/10 text-green-600 border-green-500/20" : row.status === "upcoming" ? "bg-yellow-500/10 text-yellow-600 border-yellow-500/20" : "bg-muted/40 text-muted-foreground"}`}
+                    >
+                      {row.phase}
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{row.detail}</p>
+                  <div className="flex flex-wrap gap-1">
+                    {row.branches.map((b, i) => (
+                      <span key={b} className={`text-[10px] px-2 py-0.5 rounded-full border ${i === 0 ? "bg-primary/10 border-primary/20 text-primary font-medium" : "bg-muted/40 border-border/40 text-muted-foreground"}`}>
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <div className="border-t border-border/40 pt-3 flex items-start gap-2">
               <Layers className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-0.5" />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                The same model works for any principal-assistant relationship — or any team where a consistent approach needs to scale.
-                Once the source playbook is captured, alignment can extend to any group.
+                Each branch has its own source playbook and its own alignment scores. Leadership sees across all branches without being in every conversation.
+                Vedant's strategy — or the board's strategy — reaches every client interaction, automatically.
               </p>
             </div>
           </CardContent>

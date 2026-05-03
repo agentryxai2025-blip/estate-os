@@ -31,7 +31,7 @@ const navigation = [
   { name: "Audit Log", href: "/audit", icon: History },
   { name: "Architecture", href: "/architecture", icon: Network },
   { name: "Strategy Hub", href: "/strategy-hub", icon: BookMarked },
-  { name: "Team Alignment", href: "/team-alignment", icon: UserCheck },
+  { name: "Branch Alignment", href: "/team-alignment", icon: UserCheck },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
