@@ -19,6 +19,8 @@ import DataSources from "@/pages/data-sources";
 import AiConfig from "@/pages/ai-config";
 import Audit from "@/pages/audit";
 import Architecture from "@/pages/architecture";
+import StrategyHub from "@/pages/strategy-hub";
+import TeamAlignment from "@/pages/team-alignment";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,8 @@ function Router() {
         <Route path="/ai-config" component={AiConfig} />
         <Route path="/audit" component={Audit} />
         <Route path="/architecture" component={Architecture} />
+        <Route path="/strategy-hub" component={StrategyHub} />
+        <Route path="/team-alignment" component={TeamAlignment} />
       </Switch>
     </Layout>
   );

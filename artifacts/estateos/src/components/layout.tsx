@@ -11,7 +11,9 @@ import {
   Database, 
   Settings2, 
   History,
-  Network
+  Network,
+  BookMarked,
+  UserCheck
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -28,6 +30,8 @@ const navigation = [
   { name: "AI Config", href: "/ai-config", icon: Settings2 },
   { name: "Audit Log", href: "/audit", icon: History },
   { name: "Architecture", href: "/architecture", icon: Network },
+  { name: "Strategy Hub", href: "/strategy-hub", icon: BookMarked },
+  { name: "Team Alignment", href: "/team-alignment", icon: UserCheck },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
